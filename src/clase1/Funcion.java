@@ -5,9 +5,6 @@ import java.util.ArrayList;
 
 public class Funcion {
 
-    private List <Integer> listaNums = new ArrayList<>();
-
-
     public static void main(String[] args) {
         List <Integer> lista = Funcion.Cascara(8);
         System.out.println(lista);
