@@ -1,16 +1,19 @@
 package clase1;
 
 import java.util.List;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Funcion {
 
+    private List <Integer> listaNums = new ArrayList<>();
+
+
     public static void main(String[] args) {
-        List <Integer> lista = Cascara(6);
+        List <Integer> lista = Funcion.Cascara(8);
         System.out.println(lista);
     }
 
-    private static void calcularSucesion(int n,List<Integer> sucesion) {
+    private static void calcularSucesion(int n, List<Integer> sucesion) {
         int num;
         sucesion.add(n);
         if (n != 1) {
@@ -24,7 +27,7 @@ public class Funcion {
     }
 
     public static List <Integer> Cascara(int num) {
-        List <Integer> sucesionNums = new LinkedList<>();
+        List <Integer> sucesionNums = new ArrayList<>();
         calcularSucesion(num,sucesionNums);
         return sucesionNums;
     }
