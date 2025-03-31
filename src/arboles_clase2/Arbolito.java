@@ -8,10 +8,13 @@ public class Arbolito {
         hi.addLeftChild(new BinaryTree<Integer>(11));
         hi.addRightChild(new BinaryTree<>(34));
         BinaryTree<Integer> hd = new BinaryTree<>(72);
+        hd.addLeftChild(new BinaryTree<>(66));
+        hd.addRightChild(new BinaryTree<>(88));
         root.addRightChild(hd);
         root.addLeftChild(hi);
-        System.out.println(root.contarHojas());
+        System.out.println(root.contarHojas() + "\n");
 
+        root.imprimirContenido();
     }
 
 

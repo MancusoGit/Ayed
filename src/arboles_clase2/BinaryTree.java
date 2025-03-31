@@ -99,6 +99,12 @@ public class BinaryTree <T> {
         }
     }
 
+    public void imprimirContenido() {
+        System.out.println(this.getData() + "\n");
+        if (this.hasLeftChild()) {this.getLeftChild().imprimirContenido();}
+        if (this.hasRightChild()) {this.getRightChild().imprimirContenido();}
+    }
+
     public BinaryTree<T> espejo(){
 
         return null;
