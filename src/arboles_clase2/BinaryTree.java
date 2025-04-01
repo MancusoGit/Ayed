@@ -1,5 +1,8 @@
 package arboles_clase2;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTree <T> {
@@ -106,8 +109,14 @@ public class BinaryTree <T> {
     }
 
     public BinaryTree<T> espejo(){
+        if (this.isEmpty()) {
+            return null;
+        }
 
-        return null;
+        BinaryTree<T> arNue = new BinaryTree<>(this.getData());
+
+        
+        return arNue;
     }
 
     // 0<=n<=m
