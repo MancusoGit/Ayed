@@ -102,26 +102,28 @@ public class BinaryTree <T> {
         }
     }
 
+
+
     public void imprimirContenido() {
         System.out.println(this.getData() + "\n");
         if (this.hasLeftChild()) {this.getLeftChild().imprimirContenido();}
         if (this.hasRightChild()) {this.getRightChild().imprimirContenido();}
     }
 
-    public BinaryTree<T> espejo(){
-        if (this.isEmpty()) {
-            return null;
+    public BinaryTree<T> espejo() {
+        BinaryTree<T> arNue = new BinaryTree<>(this.data);
+        if (this.hasLeftChild()) {
+            arNue.addRightChild(this.getLeftChild().espejo());
         }
-
-        BinaryTree<T> arNue = new BinaryTree<>(this.getData());
-
-        
+        if (this.hasRightChild()) {
+            arNue.addLeftChild(this.getRightChild().espejo());
+        }
         return arNue;
     }
 
     // 0<=n<=m
     public void entreNiveles(int n, int m){
-
+        //hacer un recorrido iterativo siempre que sea por niveles
     }
 
 }

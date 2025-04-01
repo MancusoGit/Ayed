@@ -14,7 +14,11 @@ public class Arbolito {
         root.addLeftChild(hi);
         System.out.println(root.contarHojas() + "\n");
 
+        System.out.println("arbol original");
         root.imprimirContenido();
+        BinaryTree<Integer> rootNew = root.espejo();
+        System.out.println("arbol espejo");
+        rootNew.imprimirContenido();
     }
 
 
