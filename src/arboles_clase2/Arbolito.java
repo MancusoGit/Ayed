@@ -19,7 +19,10 @@ public class Arbolito {
         BinaryTree<Integer> rootNew = root.espejo();
         System.out.println("arbol espejo");
         rootNew.imprimirContenido();
-    }
 
+        System.out.println("contenido entre los niveles 0 y 1");
+        root.entreNiveles(0,1);
+
+    }
 
 }

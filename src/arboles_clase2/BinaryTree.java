@@ -1,9 +1,8 @@
 package arboles_clase2;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Queue;
 import java.util.Stack;
+import clase1.Queue;
+
 
 public class BinaryTree <T> {
 
@@ -122,8 +121,30 @@ public class BinaryTree <T> {
     }
 
     // 0<=n<=m
-    public void entreNiveles(int n, int m){
-        //hacer un recorrido iterativo siempre que sea por niveles
+    public void entreNiveles(int n, int m) {
+        BinaryTree<T> ar = null;
+        Queue<BinaryTree<T>> cola = new Queue<BinaryTree<T>>();
+        int contador = 0;
+        cola .enqueue(this);
+        cola.enqueue(null);
+        while (!cola.isEmpty()) {
+            ar = cola.dequeue();
+            if (ar != null) {
+                if ((contador >= n) && (contador <= m)) {
+                    System.out.println(ar.getData());
+                }
+                if (ar.hasLeftChild()) {
+                    cola.enqueue(ar.getLeftChild());
+                }
+                if (ar.hasRightChild()) {
+                    cola.enqueue(ar.getRightChild());
+                }
+            } else if (!cola.isEmpty()) {
+                System.out.println();
+                cola.enqueue(null);
+                contador += 1;
+            }
+        }
     }
 
 }
