@@ -132,12 +132,12 @@ public class BinaryTree <T> {
             if (ar != null) {
                 if ((contador >= n) && (contador <= m)) {
                     System.out.println(ar.getData());
-                }
-                if (ar.hasLeftChild()) {
-                    cola.enqueue(ar.getLeftChild());
-                }
-                if (ar.hasRightChild()) {
-                    cola.enqueue(ar.getRightChild());
+                    if (ar.hasLeftChild()) {
+                        cola.enqueue(ar.getLeftChild());
+                    }
+                    if (ar.hasRightChild()) {
+                        cola.enqueue(ar.getRightChild());
+                    }
                 }
             } else if (!cola.isEmpty()) {
                 System.out.println();
@@ -178,7 +178,37 @@ public class BinaryTree <T> {
     }
 
 
-    /*
+    public boolean esPrefijo(BinaryTree<T> ar1, BinaryTree<T> ar2) {
+
+        if (!ar1.getData().equals(ar2.getData())) {
+            return false;
+        }
+
+        if (ar1.isLeaf()) {
+            return true;
+        }
+
+        if (!ar1.hasLeftChild() && !ar2.hasLeftChild()) {
+            return false;
+        }
+
+        if (!ar1.hasRightChild() && !ar2.hasRightChild()) {
+            return false;
+        }
+
+        boolean leftSide = true;
+        if (ar1.hasLeftChild() && ar2.hasLeftChild()) {
+            leftSide = esPrefijo(ar1.getLeftChild(),ar2.getLeftChild());
+        }
+
+        boolean rightSide = true;
+        if (ar1.hasRightChild() && ar2.hasRightChild()) {
+            rightSide = esPrefijo(ar1.getRightChild(),ar2.getRightChild());
+        }
+        return leftSide && rightSide;
+    }
+
+/*
     metodo para generar un arbol
 
     private static BinaryTree<T> createBinaryTree(<T> Dato) {
