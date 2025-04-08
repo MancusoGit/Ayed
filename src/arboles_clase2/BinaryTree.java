@@ -147,4 +147,51 @@ public class BinaryTree <T> {
         }
     }
 
+    public boolean isFull() {
+        BinaryTree<T> ar = null;
+        Queue<BinaryTree<T>> cola = new Queue<BinaryTree<T>>();
+        boolean lleno = true;
+        int cant_nodos = 0;
+        int nivel = 0;
+        cola.enqueue(this);
+        cola.enqueue(null);
+        while(!cola.isEmpty() && lleno) {
+            ar = cola.dequeue();
+            if (ar != null) {
+                if (ar.hasLeftChild()) {
+                    cola.enqueue(ar.getLeftChild());
+                    cant_nodos++;
+                }
+                if (ar.hasRightChild()) {
+                    cola.enqueue(ar.getRightChild());
+                    cant_nodos++;
+                }
+            } else if (!cola.isEmpty()) {
+                if (cant_nodos == Math.pow(2,++nivel)) {
+                    cola.enqueue(null);
+                    cant_nodos = 0;
+                } else
+                    lleno = false;
+            }
+        }
+        return lleno;
+    }
+
+
+    /*
+    metodo para generar un arbol
+
+    private static BinaryTree<T> createBinaryTree(<T> Dato) {
+        BinaryTree<T> ar = new BinaryTree<T>(dato);
+        if (comparacion) {
+            ar.addLeftChild(createBinaryTree(dato));
+        }
+        if (comparacion) {
+            ar.addRightChild(createBinaryTree(dato));
+        }
+        return ar;
+    }
+
+     */
+
 }
