@@ -30,12 +30,12 @@ public class Arbolito {
         hi.addLeftChild(new BinaryTree<Integer>(11));
         hi.addRightChild(new BinaryTree<>(34));
         BinaryTree<Integer> hd2 = new BinaryTree<>(72);
-        //hd2.addRightChild(new BinaryTree<Integer>(92));
+        hd2.addRightChild(new BinaryTree<Integer>(92));
         root2.addLeftChild(hi2);
         root2.addRightChild(hd2);
         System.out.println();
         System.out.print("es prefijo: ");
-        System.out.println(root.esPrefijo(root,root2));
+        System.out.println(root.esPrefijo(root2,root));
     }
 
 }

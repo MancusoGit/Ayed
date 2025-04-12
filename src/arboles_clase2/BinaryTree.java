@@ -188,11 +188,7 @@ public class BinaryTree <T> {
             return true;
         }
 
-        if (!ar1.hasLeftChild() && !ar2.hasLeftChild()) {
-            return false;
-        }
-
-        if (!ar1.hasRightChild() && !ar2.hasRightChild()) {
+        if ((ar1.hasLeftChild() != ar2.hasLeftChild()) || (ar1.hasRightChild() != ar2.hasRightChild())) {
             return false;
         }
 
@@ -208,7 +204,7 @@ public class BinaryTree <T> {
         return leftSide && rightSide;
     }
 
-/*
+    /*
     metodo para generar un arbol
 
     private static BinaryTree<T> createBinaryTree(<T> Dato) {
@@ -221,7 +217,6 @@ public class BinaryTree <T> {
         }
         return ar;
     }
-
-     */
+    */
 
 }
