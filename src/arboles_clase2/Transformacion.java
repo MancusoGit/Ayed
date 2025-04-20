@@ -24,7 +24,6 @@ public class Transformacion {
         root.recorridoPorNiveles();
     }
 
-
     private int sumaPrivada(BinaryTree<Integer> ar) {
         int valor = ar.getData();
 
@@ -34,10 +33,13 @@ public class Transformacion {
         }
 
         int sumaIzq = 0;
+
         int sumaDer = 0;
+
         if (ar.hasLeftChild()) {
             sumaIzq = sumaPrivada(ar.getLeftChild());
         }
+
         if (ar.hasRightChild()) {
             sumaDer = sumaPrivada(ar.getRightChild());
         }

@@ -101,7 +101,27 @@ public class BinaryTree <T> {
         }
     }
 
-
+    public void recorridoPorNiveles() {
+        BinaryTree<T> ab = new BinaryTree<>();
+        Queue<BinaryTree<T>> cola = new Queue<BinaryTree<T>>();
+        cola.enqueue(this);
+        cola.enqueue(null);
+        while (!cola.isEmpty()) {
+            ab = cola.dequeue();
+            if (ab != null) {
+                System.out.println(ab.getData());
+                if (ab.hasLeftChild()) {
+                    cola.enqueue(ab.getLeftChild());
+                }
+                if (ab.hasRightChild()) {
+                    cola.enqueue(ab.getRightChild());
+                }
+            } else if (!cola.isEmpty()) {
+                System.out.println();
+                cola.enqueue(null);
+            }
+        }
+    }
 
     public void imprimirContenido() {
         System.out.println(this.getData() + "\n");
@@ -188,7 +208,11 @@ public class BinaryTree <T> {
             return true;
         }
 
-        if ((ar1.hasLeftChild() != ar2.hasLeftChild()) || (ar1.hasRightChild() != ar2.hasRightChild())) {
+        if (!ar1.hasLeftChild() && !ar2.hasLeftChild()) {
+            return false;
+        }
+
+        if (!ar1.hasRightChild() && !ar2.hasRightChild()) {
             return false;
         }
 
@@ -204,94 +228,7 @@ public class BinaryTree <T> {
         return leftSide && rightSide;
     }
 
-    public boolean isLeftTree(int num) {
-        BinaryTree<T> ar = buscar(this, num);
-
-        if (ar == null) {
-            return false;
-        }
-
-        int cantIzq = ar.hasLeftChild() ? contarUnicoHijo(ar.getLeftChild()) : -1;
-
-        int cantDer = ar.hasRightChild() ? contarUnicoHijo(ar.getRightChild()) : -1;
-
-        return cantIzq > cantDer;
-    }
-
-    private int contarUnicoHijo(BinaryTree<T> ar) {
-        if (ar == null || ar.isLeaf()) {
-            return 0;
-        }
-
-        int contador = 0;
-
-        if (ar.hasLeftChild() ^ ar.hasRightChild()) {
-            contador = 1;
-        }
-
-        if (ar.hasLeftChild()) {
-            contador += contarUnicoHijo(ar.getLeftChild());
-        }
-
-        if (ar.hasRightChild()) {
-            contador += contarUnicoHijo(ar.getRightChild());
-        }
-
-        return contador;
-    }
-
-    public void recorridoPorNiveles() {
-        BinaryTree<T> ab = null;
-        Queue<BinaryTree<T>> cola = new Queue<BinaryTree<T>>();
-        cola.enqueue(this);
-        cola.enqueue(null);
-        while (!cola.isEmpty()) {
-            ab = cola.dequeue();
-            if (ab != null) {
-                System.out.println(ab.getData());
-                if (ab.hasLeftChild()) {
-                    cola.enqueue(ab.getLeftChild());
-                }
-                if (ab.hasRightChild()) {
-                    cola.enqueue(ab.getRightChild());
-                }
-            } else if (!cola.isEmpty()) {
-                System.out.println();
-                cola.enqueue(null);
-            }
-        }
-    }
-
-
-    private BinaryTree<T> buscar(BinaryTree<T> arbol, int valor) {
-        if (arbol == null) {
-            return null;
-        }
-
-        if (arbol.getData().equals(valor)) {
-            return arbol;
-        }
-
-        BinaryTree<T> ar = null;
-
-        if (arbol.hasLeftChild()) {
-            ar = buscar(arbol.getLeftChild(),valor);
-        }
-
-        if (arbol.hasRightChild()) {
-            ar = buscar(arbol.getRightChild(),valor);
-        }
-
-        return ar;
-    }
-
-
-/*    private boolean contarhijos(BinaryTree<T> ar, int num, boolean encontre) {
-
-    }
-
-*/
-    /*
+/*
     metodo para generar un arbol
 
     private static BinaryTree<T> createBinaryTree(<T> Dato) {
@@ -304,6 +241,7 @@ public class BinaryTree <T> {
         }
         return ar;
     }
-    */
+
+     */
 
 }
