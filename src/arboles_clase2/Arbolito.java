@@ -1,6 +1,5 @@
 package arboles_clase2;
 
-import java.sql.SQLOutput;
 
 public class Arbolito {
 
