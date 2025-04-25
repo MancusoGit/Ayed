@@ -1,9 +1,6 @@
 package arboles_generales_clase3;
 
-import arboles_clase2.BinaryTree;
 import clase1.Queue;
-
-import java.awt.geom.Area;
 
 public class Ejercicio4 {
 
@@ -13,12 +10,18 @@ public class Ejercicio4 {
         AreaEmpresa p1a2 = new AreaEmpresa("area 2",200);
         AreaEmpresa p2a2 = new AreaEmpresa("area 2",20);
         AreaEmpresa p3a2 = new AreaEmpresa("area 2", 10);
+        AreaEmpresa p1a3 = new AreaEmpresa("area 3",300);
+        AreaEmpresa p2a3 = new AreaEmpresa("area 3",45);
 
         GeneralTree<AreaEmpresa> root = new GeneralTree<AreaEmpresa>(a1);
         GeneralTree<AreaEmpresa> h1 = new GeneralTree<AreaEmpresa>(p1a2);
         GeneralTree<AreaEmpresa> h2 = new GeneralTree<AreaEmpresa>(p2a2);
         GeneralTree<AreaEmpresa> h3 = new GeneralTree<AreaEmpresa>(p3a2);
+        GeneralTree<AreaEmpresa> h4 = new GeneralTree<AreaEmpresa>(p1a3);
+        GeneralTree<AreaEmpresa> h5 = new GeneralTree<AreaEmpresa>(p2a3);
 
+        h1.addChild(h4);
+        h3.addChild(h5);
         root.addChild(h1);
         root.addChild(h2);
         root.addChild(h3);

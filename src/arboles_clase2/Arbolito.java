@@ -1,6 +1,8 @@
 package arboles_clase2;
 
 
+import java.util.ArrayList;
+
 public class Arbolito {
 
     public static void main(String[] args) {
@@ -35,6 +37,35 @@ public class Arbolito {
         System.out.println();
         System.out.print("es prefijo: ");
         System.out.println(root.esPrefijo(root2,root));
+        System.out.println();
+
+        Arbolito aux = new Arbolito();
+        ArrayList<Integer> listita = new ArrayList<>();
+        aux.numerosPares(root   , listita);
+        for (int num : listita) {
+            System.out.println(num);
+        }
+        System.out.println();
+        System.out.println("cantidad de pares en root: " + aux.numerosParesContador(root));
+    }
+
+    public void numerosPares(BinaryTree<Integer> ar, ArrayList<Integer> lista) {
+        if ((ar.getData() % 2) == 0) {
+            lista.add(ar.getData());
+        }
+        if (ar.hasLeftChild()) {
+            numerosPares(ar.getLeftChild(),lista);
+        }
+        if (ar.hasRightChild()) {
+            numerosPares(ar.getRightChild(),lista);
+        }
+    }
+
+    private int numerosParesContador(BinaryTree<Integer> nodo) {
+        int count = (nodo.getData() % 2 == 0) ? 1 : 0;
+        if (nodo.hasLeftChild()) {count += numerosParesContador(nodo.getLeftChild());}
+        if (nodo.hasRightChild()) {count += numerosParesContador(nodo.getRightChild());}
+        return count;
     }
 
 }
